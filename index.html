@@ -35,6 +35,8 @@
 
 <script>
 
+// LAYER STYLES
+
 var footprintStyle = {
 	color: 'black',
 	fillColor: 'white',
@@ -43,6 +45,7 @@ var footprintStyle = {
 
 var roomStyle = {
 	color: 'none',
+	opacity: 0,
 	fillColor: 'white',
 	fillOpacity: 1
 };
@@ -53,6 +56,33 @@ var wallStyle = {
 	weight: 3,
 	fillOpacity: 1
 };
+
+var highlight = {
+    'color': 'red',
+    'weight': 2,
+    'opacity': 1
+};
+
+
+// FIRST FLOOR FEATURES
+
+
+	var L1outline = L.polyline([
+	[0,  0],
+	[50.5,  0],
+	[50.5, 17],
+	[31.5, 17],
+	[31.5, 19],
+	[12, 19],
+	[12, 17],
+	[8, 17],
+	[4, 17],
+	[4, 13],
+	[0, 13],
+	[0, 0]
+
+],footprintStyle
+).bindPopup("First Floor");;
 
 
 	var L1footprint = L.polygon([
@@ -72,30 +102,31 @@ var wallStyle = {
 ).bindPopup("1st Floor");;
 
 	var L1livingroom = L.polygon([
-	[0,  0],
+	[0, 0],
 	[14,  0],
 	[14, 13],
 	[0, 13]
 ],roomStyle
 ).bindPopup("Living Room");;
 
+	var L1kitchen = L.polygon([
+	[14,  0],
+	[14, 13],
+	[27, 13],
+	[27, 0]
+],roomStyle
+).bindPopup("Kitchen");;
 
-	var L1outline = L.polyline([
-	[0,  0],
-	[50.5,  0],
-	[50.5, 17],
-	[31.5, 17],
-	[31.5, 19],
-	[12, 19],
-	[12, 17],
-	[8, 17],
-	[4, 17],
-	[4, 13],
-	[0, 13],
-	[0, 0]
+	var L1diningroom = L.polygon([
+	[14,  0],
+	[14, 13],
+	[27, 13],
+	[27, 0]
+],roomStyle
+).bindPopup("Dining Room");;
 
-],footprintStyle
-).bindPopup("First Floor");;
+
+// SECOND FLOOR FEATURES
 
 
 	var L2footprint = L.polygon([
@@ -130,7 +161,7 @@ var wallStyle = {
 ],wallStyle
 ).bindPopup("2nd Floor");;
 
-var L1 = L.layerGroup([L1footprint, L1livingroom, L1outline]);
+var L1 = L.layerGroup([L1footprint, L1livingroom, L1kitchen, L1outline]);
 var L2 = L.layerGroup([L2footprint, L2outline]);
 
 	var map = L.map('map', {
@@ -146,6 +177,17 @@ var L2 = L.layerGroup([L2footprint, L2outline]);
 	"Level 1": L1,
 	"Level 2": L2
 };
+
+L1.eachLayer(function(layer) {
+	layer.on('mouseover', function (e) {
+		layer.setStyle(highlight);
+		layer.bringToFront();
+		});
+	layer.on('mouseout', function (e) {
+		layer.setStyle(roomStyle);
+		layer.bringToBack();
+		});
+});
 
 	L.control.layers(baseMaps).addTo(map);
 </script>
