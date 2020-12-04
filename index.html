@@ -35,6 +35,26 @@
 
 <script>
 
+var footprintStyle = {
+	color: 'black',
+	fillColor: 'white',
+	fillOpacity: 1
+};
+
+var roomStyle = {
+	color: 'none',
+	fillColor: 'white',
+	fillOpacity: 1
+};
+
+var wallStyle = {
+	color: 'black',
+	fillColor: 'none',
+	weight: 3,
+	fillOpacity: 1
+};
+
+
 	var L1footprint = L.polygon([
 	[0,  0],
 	[50.5,  0],
@@ -48,10 +68,7 @@
 	[4, 13],
 	[0, 13]
 
-],
-{color: 'none',
-fillColor: 'white',
-fillOpacity: 1}
+],footprintStyle
 ).bindPopup("1st Floor");;
 
 	var L1livingroom = L.polygon([
@@ -59,10 +76,7 @@ fillOpacity: 1}
 	[14,  0],
 	[14, 13],
 	[0, 13]
-],
-{color: 'none',
-fillColor: 'white',
-fillOpacity: 1}
+],roomStyle
 ).bindPopup("Living Room");;
 
 
@@ -80,10 +94,7 @@ fillOpacity: 1}
 	[0, 13],
 	[0, 0]
 
-],
-{color: 'black',
-fillColor: 'white',
-fillOpacity: 1}
+],footprintStyle
 ).bindPopup("First Floor");;
 
 
@@ -99,10 +110,7 @@ fillOpacity: 1}
 	[4, 17],
 	[0, 17]
 
-],
-{color: 'black',
-fillColor: 'white',
-fillOpacity: 1}
+],footprintStyle
 ).bindPopup("2nd Floor");;
 
 	var L2outline = L.polygon([
@@ -118,10 +126,7 @@ fillOpacity: 1}
 	[0, 17],
 	[0,  0]
 
-],
-{color: 'black',
-fillColor: 'white',
-fillOpacity: 1}
+],wallStyle
 ).bindPopup("2nd Floor");;
 
 var L1 = L.layerGroup([L1footprint, L1livingroom, L1outline]);
