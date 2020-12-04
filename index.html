@@ -22,8 +22,8 @@
 			margin: 0;
 		}
 		#map {
-			width: 100%;
-			height: 100%;
+			width: 500px;
+			height: 500px;
 		}
 	</style>
 
@@ -62,6 +62,24 @@
 fillColor: 'white',
 fillOpacity: 1}
 ).addTo(map).bindPopup("First Floor");;
+
+	var secondfloor = L.polygon([
+	[0,  0],
+	[52,  0],
+	[52, 17],
+	[31.5, 17],
+	[31.5, 19],
+	[12, 19],
+	[12, 17],
+	[8, 17],
+	[4, 17],
+	[0, 17]
+
+],
+{color: 'black',
+fillColor: 'white',
+fillOpacity: 0.5}
+).addTo(map).bindPopup("Second Floor");;
 
 </script>
 
