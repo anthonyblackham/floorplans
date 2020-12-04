@@ -35,15 +35,6 @@
 
 <script>
 
-	var map = L.map('map', {
-		crs: L.CRS.Simple,
-		minZoom: 0
-	});
-
-	map.setView([25.25, 9], 3);
-	map.addControl(new L.Control.Fullscreen());
-
-
 	var firstfloor = L.polygon([
 	[0,  0],
 	[50.5,  0],
@@ -61,7 +52,7 @@
 {color: 'black',
 fillColor: 'white',
 fillOpacity: 1}
-).addTo(map).bindPopup("First Floor");;
+).bindPopup("First Floor");;
 
 	var secondfloor = L.polygon([
 	[0,  0],
@@ -79,8 +70,24 @@ fillOpacity: 1}
 {color: 'black',
 fillColor: 'white',
 fillOpacity: 0.5}
-).addTo(map).bindPopup("Second Floor");;
+).bindPopup("Second Floor");;
 
+
+	var map = L.map('map', {
+		crs: L.CRS.Simple,
+		minZoom: 0,
+		layers: [firstfloor]
+	});
+
+	map.setView([25.25, 9], 3);
+	map.addControl(new L.Control.Fullscreen());
+
+	var baseMaps = {
+	"1st Floor": firstfloor,
+	"2nd Floor": secondfloor
+};
+
+	L.control.layers(baseMaps).addTo(map);
 </script>
 
 </body>
