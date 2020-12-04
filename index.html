@@ -71,8 +71,8 @@ var highlight = {
 	[0,  0],
 	[50.5,  0],
 	[50.5, 17],
-	[31.5, 17],
-	[31.5, 19],
+	[31, 17],
+	[31, 19],
 	[12, 19],
 	[12, 17],
 	[8, 17],
@@ -89,8 +89,8 @@ var highlight = {
 	[0,  0],
 	[50.5,  0],
 	[50.5, 17],
-	[31.5, 17],
-	[31.5, 19],
+	[31, 17],
+	[31, 19],
 	[12, 19],
 	[12, 17],
 	[8, 17],
@@ -99,7 +99,7 @@ var highlight = {
 	[0, 13]
 
 ],footprintStyle
-).bindPopup("1st Floor");;
+).bindPopup("First Floor");;
 
 	var L1livingroom = L.polygon([
 	[0, 0],
@@ -108,6 +108,22 @@ var highlight = {
 	[0, 13]
 ],roomStyle
 ).bindPopup("Living Room");;
+
+	var L1foyer = L.polygon([
+	[4, 13],
+	[4, 17],
+	[9, 17],
+	[9, 13]
+],roomStyle
+).bindPopup("Foyer");;
+
+	var L1closet = L.polygon([
+	[9, 13],
+	[9, 17],
+	[12, 17],
+	[12, 13]
+],roomStyle
+).bindPopup("Closet");;
 
 	var L1kitchen = L.polygon([
 	[14,  0],
@@ -118,14 +134,28 @@ var highlight = {
 ).bindPopup("Kitchen");;
 
 	var L1diningroom = L.polygon([
-	[14,  0],
-	[14, 13],
-	[27, 13],
-	[27, 0]
+	[12, 13],
+	[25, 13],
+	[25, 19],
+	[12, 19]
 ],roomStyle
 ).bindPopup("Dining Room");;
 
+	var L1bathroom = L.polygon([
+	[25, 13],
+	[25, 19],
+	[31, 19],
+	[31, 13]
+],roomStyle
+).bindPopup("Bathroom");;
 
+	var L1garage = L.polygon([
+	[31, 0],
+	[50.5, 0],
+	[50.5, 17],
+	[31, 17]
+],roomStyle
+).bindPopup("Garage");;
 // SECOND FLOOR FEATURES
 
 
@@ -161,7 +191,7 @@ var highlight = {
 ],wallStyle
 ).bindPopup("2nd Floor");;
 
-var L1 = L.layerGroup([L1footprint, L1livingroom, L1kitchen, L1outline]);
+var L1 = L.layerGroup([L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1footprint, L1outline]);
 var L2 = L.layerGroup([L2footprint, L2outline]);
 
 	var map = L.map('map', {
