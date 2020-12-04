@@ -35,7 +35,7 @@
 
 <script>
 
-	var firstfloor = L.polygon([
+	var L1footprint = L.polygon([
 	[0,  0],
 	[50.5,  0],
 	[50.5, 17],
@@ -49,12 +49,45 @@
 	[0, 13]
 
 ],
+{color: 'none',
+fillColor: 'white',
+fillOpacity: 1}
+).bindPopup("1st Floor");;
+
+	var L1livingroom = L.polygon([
+	[0,  0],
+	[14,  0],
+	[14, 13],
+	[0, 13]
+],
+{color: 'none',
+fillColor: 'white',
+fillOpacity: 1}
+).bindPopup("Living Room");;
+
+
+	var L1outline = L.polyline([
+	[0,  0],
+	[50.5,  0],
+	[50.5, 17],
+	[31.5, 17],
+	[31.5, 19],
+	[12, 19],
+	[12, 17],
+	[8, 17],
+	[4, 17],
+	[4, 13],
+	[0, 13],
+	[0, 0]
+
+],
 {color: 'black',
 fillColor: 'white',
 fillOpacity: 1}
 ).bindPopup("First Floor");;
 
-	var secondfloor = L.polygon([
+
+	var L2footprint = L.polygon([
 	[0,  0],
 	[52,  0],
 	[52, 17],
@@ -69,22 +102,43 @@ fillOpacity: 1}
 ],
 {color: 'black',
 fillColor: 'white',
-fillOpacity: 0.5}
-).bindPopup("Second Floor");;
+fillOpacity: 1}
+).bindPopup("2nd Floor");;
 
+	var L2outline = L.polygon([
+	[0,  0],
+	[52,  0],
+	[52, 17],
+	[31.5, 17],
+	[31.5, 19],
+	[12, 19],
+	[12, 17],
+	[8, 17],
+	[4, 17],
+	[0, 17],
+	[0,  0]
+
+],
+{color: 'black',
+fillColor: 'white',
+fillOpacity: 1}
+).bindPopup("2nd Floor");;
+
+var L1 = L.layerGroup([L1footprint, L1livingroom, L1outline]);
+var L2 = L.layerGroup([L2footprint, L2outline]);
 
 	var map = L.map('map', {
 		crs: L.CRS.Simple,
 		minZoom: 0,
-		layers: [firstfloor]
+		layers: [L1]
 	});
 
 	map.setView([25.25, 9], 3);
 	map.addControl(new L.Control.Fullscreen());
 
 	var baseMaps = {
-	"1st Floor": firstfloor,
-	"2nd Floor": secondfloor
+	"Level 1": L1,
+	"Level 2": L2
 };
 
 	L.control.layers(baseMaps).addTo(map);
