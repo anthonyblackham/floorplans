@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Floorplan Test</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#map {
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<script>
+
+	var map = L.map('map', {
+		crs: L.CRS.Simple,
+		minZoom: 0
+	});
+
+
+	var firstfloor = L.polygon([
+	[0,  0],
+	[50.5,  0],
+	[50.5, 17],
+	[31.5, 17],
+	[31.5, 19],
+	[12, 19],
+	[12, 17],
+	[8, 17],
+	[4, 17],
+	[4, 13],
+	[0, 13]
+
+],
+{color: 'black',
+fillColor: 'white',
+fillOpacity: 1}
+).addTo(map).bindPopup("First Floor");;
+
+	map.setView([25.25, 9], 3);
+
+</script>
+
+</body>
+</html>
