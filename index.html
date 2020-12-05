@@ -49,6 +49,11 @@ var footprintStyle = {
 	fillOpacity: 1
 };
 
+var fixtureStyle = {
+	color: 'red',
+	weight: .5
+};
+
 var roomStyle = {
 	color: 'black',
 	opacity: 1,
@@ -64,13 +69,32 @@ var wallStyle = {
 };
 
 var highlight = {
-    'color': 'red',
-    'weight': 2,
-    'opacity': 1
+	'color': 'red',
+	'weight': 2,
+	'opacity': 1
 };
 
 
 // FIRST FLOOR FEATURES
+
+//Fixtures
+
+	var L1fixtures = L.polyline(
+	[
+	[[14, 0],
+	 [14, 9],
+	 [17, 9],
+	 [17, 2],
+	 [23, 2],
+	 [23, 0],
+	 [14,0]],
+	[[15, 5],
+	 [15, 8],
+	 [16.75, 8],
+	 [16.75, 5],
+	 [15, 5]]
+],fixtureStyle
+);
 
 	var L1outline = L.polyline([
 	[0,  0],
@@ -198,7 +222,7 @@ var highlight = {
 ],wallStyle
 ).bindPopup("2nd Floor");;
 
-var L1 = L.layerGroup([L1footprint, L1outline, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage]);
+var L1 = L.layerGroup([L1footprint, L1outline, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1fixtures]);
 var L2 = L.layerGroup([L2footprint, L2outline]);
 
 	var map = L.map('map', {
