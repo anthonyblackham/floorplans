@@ -56,7 +56,7 @@ var fixtureStyle = {
 
 var roomStyle = {
 	color: 'black',
-	opacity: 1,
+	opacity: 0,
 	fillColor: 'white',
 	fillOpacity: 1
 };
@@ -69,9 +69,11 @@ var wallStyle = {
 };
 
 var highlight = {
-	'color': 'red',
-	'weight': 2,
-	'opacity': 1
+	color: 'red',
+	opacity: 0,
+	fillColor: 'red',
+	fillOpacity: .5,
+	weight: 2,
 };
 
 
@@ -124,8 +126,8 @@ var highlight = {
 	 [25, 3],
 	 [28, 3]],
 	[[28, 6], //fridge
-	 [28, 9],
-	 [25, 9],
+	 [28, 10],
+	 [25, 10],
 	 [25, 6],
 	 [28, 6]],
 	 [[30.75, 13.25], //sink
@@ -148,24 +150,68 @@ var highlight = {
 	 [28, 18.25],
 	 [29.75, 18.25],
 	 [29.75, 17.25]],
+	[[31, 3], //Stairs
+	 [28, 3]],
+	[[31, 4],
+	 [28, 4]],
+	[[31, 5],
+	 [28, 5]],
+	[[31, 6],
+	 [28, 6]],
+	[[31, 7],
+	 [28, 7]],
+	[[31, 8],
+	 [28, 8]],
+	[[31, 9],
+	 [28, 9]],
+	[[31, 10],
+	 [28, 10]],
 ],fixtureStyle
 );
 
-	var L1outline = L.polyline([
-	[0,  0],
-	[50.5,  0],
-	[50.5, 17],
-	[31, 17],
-	[31, 19],
-	[12, 19],
-	[12, 17],
-	[8, 17],
-	[4, 17],
-	[4, 13],
-	[0, 13],
-	[0, 0]
+//Walls
 
-],footprintStyle
+	var L1walls = L.polyline([
+	[[0,  0],   //perimeter
+	 [50.5,  0],
+	 [50.5, 17],
+	 [31, 17],
+	 [31, 19],
+	 [12, 19],
+	 [12, 17],
+	 [8, 17],
+	 [4, 17],
+	 [4, 13],
+	 [0, 13],
+	 [0, 0]],
+	[[14, 0], //kitchen
+	 [14, 6]],
+	[[23, 0],  //pantry
+	 [23, 2],
+	 [23.5, 2.25]],
+	[[28, 0], 
+	 [28, 3],
+	 [25, 3],
+	 [24.5, 2.75]],
+	[[28, 3], 
+	 [28, 10]],
+	[[31, 0], //garage
+	 [31, 10]],
+	[[31, 13], //walls
+	 [31, 19]],
+	[[31, 13], //bathroom
+	 [27, 13]],
+	[[25, 13], 
+	 [25, 19]],
+	[[12, 17], //closet
+	 [12, 13],
+	 [9, 13],
+	 [9, 14]],
+	[[9, 16.0],
+	 [9, 17]],
+	[[12, 13], 
+	 [13, 13]],
+],wallStyle
 ).bindPopup("First Floor");;
 
 	var L1footprint = L.polygon([
@@ -179,8 +225,7 @@ var highlight = {
 	[8, 17],
 	[4, 17],
 	[4, 13],
-	[0, 13]
-
+	[0, 13],
 ],footprintStyle
 ).bindPopup("First Floor");;
 
@@ -242,6 +287,15 @@ var highlight = {
 ],roomStyle
 ).bindPopup("Garage").bindTooltip("Garage", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
 
+	var L1pantry = L.polygon([
+	[28, 0],
+	[28, 3],
+	[25, 3],
+	[23, 2],
+	[23, 0]
+],roomStyle
+).bindPopup("Pantry").bindTooltip("Pantry", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
 // SECOND FLOOR FEATURES
 
 
@@ -277,7 +331,7 @@ var highlight = {
 ],wallStyle
 ).bindPopup("2nd Floor");;
 
-var L1 = L.layerGroup([L1footprint, L1outline, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1fixtures]);
+var L1 = L.layerGroup([L1footprint, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1pantry, L1fixtures, L1walls]);
 var L2 = L.layerGroup([L2footprint, L2outline]);
 
 	var map = L.map('map', {
@@ -295,14 +349,16 @@ var L2 = L.layerGroup([L2footprint, L2outline]);
 };
 
 L1.eachLayer(function(layer) {
-	layer.on('mouseover', function (e) {
-		layer.setStyle(highlight);
-		layer.bringToFront();
-		});
-	layer.on('mouseout', function (e) {
-		layer.setStyle(roomStyle);
-		layer.bringToBack();
-		});
+	if (layer instanceof L.Polygon) {
+		layer.on('mouseover', function (e) {
+			layer.setStyle(highlight);
+//			layer.bringToFront();
+			});
+		layer.on('mouseout', function (e) {
+			layer.setStyle(roomStyle);
+//			layer.bringToBack();
+			});
+	}
 });
 
 	L.control.layers(baseMaps).addTo(map);
