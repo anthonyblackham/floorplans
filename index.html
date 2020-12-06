@@ -32,6 +32,13 @@
 			border: transparent;
 			box-shadow: 0 0px 0px rgba(0,0,0,0);
 		}
+		.imgclass {
+			display: block;
+			max-width:400px;
+			max-height:400px;
+			width: auto;
+			height: auto;
+		}
 }
 	</style>
 
@@ -649,7 +656,7 @@ L2.eachLayer(function(layer) {
 
 		var marker = L.marker([0, 0]).addTo(map).on('click', function () {
 			sidebar.toggle();
-			sidebar.setContent('<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>');
+			sidebar.setContent('<h1>2017</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2018</h1>' +  '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2019</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />');
 		});
 
 		map.on('click', function () {
