@@ -51,7 +51,8 @@ var footprintStyle = {
 
 var fixtureStyle = {
 	color: 'black',
-	weight: .5
+	weight: .5,
+	opacity: 0.25,
 };
 
 var roomStyle = {
@@ -75,7 +76,6 @@ var highlight = {
 	fillOpacity: .5,
 	weight: 2,
 };
-
 
 // FIRST FLOOR FEATURES
 
@@ -237,7 +237,6 @@ var highlight = {
 	[0, 13]
 ],roomStyle
 ).bindPopup("Living Room").bindTooltip("Living Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
-//L1livingroom.bindTooltip("my tooltip text").openTooltip();
 
 	var L1foyer = L.polygon([
 	[4, 13],
@@ -298,46 +297,310 @@ var highlight = {
 
 // SECOND FLOOR FEATURES
 
+	var L2fixtures = L.polyline([
+	[[31, 3], //Stairs
+	 [28, 3]],
+	[[31, 4],
+	 [28, 4]],
+	[[31, 5],
+	 [28, 5]],
+	[[31, 6],
+	 [28, 6]],
+	[[31, 7],
+	 [28, 7]],
+	[[31, 8],
+	 [28, 8]],
+	[[31, 9],
+	 [28, 9]],
+	[[28, 0],
+	 [28, 3]],
+	[[27, 0],
+	 [27, 3]],
+	[[26, 0],
+	 [26, 3]],
+	[[25, 0],
+	 [25, 3]],
+	[[24, 0],
+	 [24, 3]],
+	[[50, 0], //masterbath
+	 [50, 5]],
+	[[46.25, 0.25], //toilet
+	 [48.25, 0.25],
+	 [48.25, 1.25],
+	 [46.25, 1.25],
+	 [46.25, 0.25]],
+	[[47.75, 1.25], 
+	 [47.75, 2.5],
+	 [46.75, 2.5],
+	 [46.75, 1.25],
+	 [47.75, 1.25]],
+	[[46, 2], //vanity
+	 [39, 2]],
+	[[45.75, 0.5], 
+	 [45.75, 1.5],
+	 [43.75, 1.5],
+	 [43.75, 0.5],
+	 [45.75, 0.5]],
+	[[41.25, 0.5], 
+	 [41.25, 1.5],
+	 [39.25, 1.5],
+	 [39.25, 0.5],
+	 [41.25, 0.5]],
+	[[18, 6], //bathroom
+	 [15.5, 6],
+	 [15.5, 8]],
+	[[13, 3], 
+	 [13, 8]],
+	[[12.5, 3.5], 
+	 [12.5, 7.5],
+	 [10.5, 7.5],
+	 [10.5, 3.5],
+	 [12.5, 3.5]],
+	[[17.75, 6.5], 
+	 [17.75, 7.5],
+	 [15.75, 7.5],
+	 [15.75, 6.5],
+	 [17.75, 6.5]],
+	[[15.25, 6.5], 
+	 [15.25, 7.5],
+	 [13.25, 7.5],
+	 [13.25, 6.5],
+	 [15.25, 6.5]],
+	[[14.75, 6.5], 
+	 [14.75, 5],
+	 [13.75, 5],
+	 [13.75, 6.5],
+	 [14.75, 6.5]],
+],fixtureStyle
+);
+
+	var L2walls = L.polyline([
+	[[0,  0], //perimeter
+	 [52,  0],
+	 [52, 17],
+	 [31, 17],
+	 [31, 19],
+	 [12, 19],
+	 [12, 17],
+	 [8, 17],
+	 [3, 17],
+	 [3, 13],
+	 [0, 13],
+	 [0, 0]],
+	[[3,  13], //greencloset
+	 [3,  12],
+	 [3.25, 12]],
+	[[10,  17], 
+	 [10,  12],
+	 [5.25, 12]],
+	[[10,  12], //greenroom
+	 [10,  3],
+	 [13, 3],
+	 [13, 2.75]],
+	[[31,  0], 
+	 [31,  13]],
+	[[31, 9], //stairs
+	 [28, 9],
+	 [28, 3],
+	 [24, 3]],
+	[[13, 3], //bathroom
+	 [14.75, 3]],
+	[[16.75, 3], 
+	 [18, 3],
+	 [18, 8],
+	 [10, 8]],
+	[[12, 17], //bluecloset
+	 [12, 15]],
+	[[12, 10], 
+	 [12, 8]],
+	[[18, 3], //hallcloset
+	 [20, 3],
+	 [20, 4]],
+	[[20, 7], 
+	 [20, 8],
+	 [18, 8]],
+	[[20, 8],
+	 [21, 9.25]], //blueroom
+	[[23, 11.75],
+	 [24, 13],
+	 [24, 19]],
+	[[31, 13],
+	 [31.5, 13]],
+	[[33.5, 13],
+	 [36, 13],
+	 [36, 14]],
+	[[36, 16.5],
+	 [36, 17]],
+	[[36, 13], //master
+	 [36, 5],
+	 [40, 5]],
+	[[39, 0], //mastercloset
+	 [39, 2.5]],
+	[[39, 4.5], 
+	 [39, 5]],
+	[[36, 5], 
+	 [31, 5]],
+	[[36, 7], 
+	 [31, 7]],
+	[[46, 0], //masterbath
+	 [46, 2.5]],
+	[[46, 4.5], 
+	 [46, 5]],
+	[[52, 5], 
+	 [45, 5]],
+],wallStyle
+).bindPopup("2nd Floor");;
 
 	var L2footprint = L.polygon([
 	[0,  0],
 	[52,  0],
 	[52, 17],
-	[31.5, 17],
-	[31.5, 19],
+	[31, 17],
+	[31, 19],
 	[12, 19],
 	[12, 17],
 	[8, 17],
 	[3, 17],
 	[3, 13],
 	[0, 13]
-
 ],footprintStyle
 ).bindPopup("2nd Floor");;
 
-	var L2outline = L.polygon([
-	[0,  0],
-	[52,  0],
-	[52, 17],
-	[31.5, 17],
-	[31.5, 19],
-	[12, 19],
-	[12, 17],
-	[8, 17],
-	[3, 17],
+	var L2greenroom = L.polygon([
+	[0, 0],
+	[13,  0],
+	[13, 3],
+	[10, 3],
+	[10, 12],
+	[3, 12],
 	[3, 13],
-	[0, 13]
+	[0, 13],
+],roomStyle
+).bindPopup("Green Room").bindTooltip("Green Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
 
-],wallStyle
-).bindPopup("2nd Floor");;
+	var L2greencloset = L.polygon([
+	[3, 12],
+	[10,  12],
+	[10, 17],
+	[3, 17]
+],roomStyle
+).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2bathroom = L.polygon([
+	[10, 3],
+	[18,  3],
+	[18, 8],
+	[10, 8]
+],roomStyle
+).bindPopup("Bathroom").bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2bluecloset = L.polygon([
+	[10, 8],
+	[12,  8],
+	[12, 17],
+	[10, 17]
+],roomStyle
+).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2blueroom = L.polygon([
+	[12, 8],
+	[20,  8],
+	[24, 13],
+	[24, 19],
+	[12, 19]
+],roomStyle
+).bindPopup("Blue Room").bindTooltip("Blue Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2hallcloset = L.polygon([
+	[18, 3],
+	[20,  3],
+	[20, 8],
+	[18, 8]
+],roomStyle
+).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2laundry = L.polygon([
+	[31, 7],
+	[31,  13],
+	[36, 13],
+	[36, 7]
+],roomStyle
+).bindPopup("Laundry Room").bindTooltip("Laundry Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2master = L.polygon([
+	[36, 5],
+	[52, 5],
+	[52, 17],
+	[36, 17]
+],roomStyle
+).bindPopup("Master Bedroom").bindTooltip("Master Bedroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2mastercloset = L.polygon([
+	[31, 0],
+	[39, 0],
+	[39, 5],
+	[31, 5]
+],roomStyle
+).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2masterbath = L.polygon([
+	[46, 0],
+	[52, 0],
+	[52, 5],
+	[46, 5]
+],roomStyle
+).bindPopup("Bathroom").bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2mastervanity = L.polygon([
+	[39, 0],
+	[46, 0],
+	[46, 5],
+	[39, 5]
+],roomStyle
+).bindPopup("Vanity").bindTooltip("Vanity", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
 
 var L1 = L.layerGroup([L1footprint, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1pantry, L1fixtures, L1walls]);
-var L2 = L.layerGroup([L2footprint, L2outline]);
+var L2 = L.layerGroup([L2footprint, L2greenroom, L2greencloset, L2bathroom, L2blueroom, L2hallcloset, L2bluecloset, L2laundry, L2master, L2mastercloset, L2mastervanity, L2masterbath, L2fixtures, L2walls]);
+
+//L.CursorHandler = L.Handler.extend({
+//
+//    addHooks: function () {
+//        this._popup = new L.Popup();
+//        this._map.on('mouseover', this._open, this);
+//        this._map.on('mousemove', this._update, this);
+//        this._map.on('mouseout', this._close, this);
+//    },
+//
+//    removeHooks: function () {
+//        this._map.off('mouseover', this._open, this);
+//        this._map.off('mousemove', this._update, this);
+//        this._map.off('mouseout', this._close, this);
+//    },
+//    
+//    _open: function (e) {
+//        this._update(e);
+//        this._popup.openOn(this._map);
+//    },
+//
+//    _close: function () {
+//        this._map.closePopup(this._popup);
+//    },
+//
+//    _update: function (e) {
+//        this._popup.setLatLng(e.latlng)
+//            .setContent(e.latlng.toString());
+//    }
+//
+//});
+//
+//L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
 	var map = L.map('map', {
 		crs: L.CRS.Simple,
 		minZoom: 0,
-		layers: [L1]
+//		cursor: true,
+		layers: [L2],
 	});
 
 	map.setView([25.25, 9], 4);
@@ -361,7 +624,21 @@ L1.eachLayer(function(layer) {
 	}
 });
 
+L2.eachLayer(function(layer) {
+	if (layer instanceof L.Polygon) {
+		layer.on('mouseover', function (e) {
+			layer.setStyle(highlight);
+//			layer.bringToFront();
+			});
+		layer.on('mouseout', function (e) {
+			layer.setStyle(roomStyle);
+//			layer.bringToBack();
+			});
+	}
+});
+
 	L.control.layers(baseMaps).addTo(map);
+
 </script>
 
 </body>
