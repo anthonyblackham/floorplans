@@ -643,13 +643,13 @@ L2.eachLayer(function(layer) {
 
 		var sidebar = L.control.sidebar('sidebar', {
 			closeButton: true,
-			position: 'left'
+			position: 'right'
 		});
 		map.addControl(sidebar);
 
 		var marker = L.marker([0, 0]).addTo(map).on('click', function () {
 			sidebar.toggle();
-			sidebar.setContent('<h1>Test</h1>');
+			sidebar.setContent('<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" height="500px" width="500px"/>');
 		});
 
 		map.on('click', function () {
@@ -676,7 +676,7 @@ L2.eachLayer(function(layer) {
 			console.log('Close button clicked.');
 		});
 
-	L.control.layers(baseMaps).addTo(map);
+	L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
 
 
 </script>
