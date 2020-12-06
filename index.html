@@ -88,9 +88,7 @@ var highlight = {
 	weight: 2,
 };
 
-// FIRST FLOOR FEATURES
-
-//Fixtures
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX FIRST FLOOR FEATURES
 
 	var L1fixtures = L.polyline(
 	[
@@ -240,14 +238,16 @@ var highlight = {
 ],footprintStyle
 ).bindPopup("First Floor");;
 
-
 	var L1livingroom = L.polygon([
 	[0, 0],
 	[14,  0],
 	[14, 13],
 	[0, 13]
 ],roomStyle
-).bindPopup("Living Room").bindTooltip("Living Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Living Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/foyer_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/livingroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/livingroom_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L1foyer = L.polygon([
 	[4, 13],
@@ -256,8 +256,8 @@ var highlight = {
 	[9, 13]
 ],roomStyle
 ).bindTooltip("Foyer", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
-sidebar.toggle()
-sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/2017_foyer.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/2019_foyer.jpg" + " class=imgclass " />');;
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/foyer_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/foyer_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/foyer_2019.jpg" + " class=imgclass " />');;
 });
 
 	var L1closet = L.polygon([
@@ -266,7 +266,7 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[12, 17],
 	[12, 13]
 ],roomStyle
-).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
 
 	var L1kitchen = L.polygon([
 	[14,  0],
@@ -274,31 +274,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[28, 13],
 	[28, 0]
 ],roomStyle
-).bindPopup("Kitchen").bindTooltip("Kitchen", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
-
-	var L1diningroom = L.polygon([
-	[12, 13],
-	[25, 13],
-	[25, 19],
-	[12, 19]
-],roomStyle
-).bindPopup("Dining Room").bindTooltip("Dining Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
-
-	var L1bathroom = L.polygon([
-	[25, 13],
-	[25, 19],
-	[31, 19],
-	[31, 13]
-],roomStyle
-).bindPopup("Bathroom").bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
-
-	var L1garage = L.polygon([
-	[31, 0],
-	[50.5, 0],
-	[50.5, 17],
-	[31, 17]
-],roomStyle
-).bindPopup("Garage").bindTooltip("Garage", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Kitchen", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/kitchen_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/kitchen_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/kitchen_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L1pantry = L.polygon([
 	[28, 0],
@@ -307,9 +286,42 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[23, 2],
 	[23, 0]
 ],roomStyle
-).bindPopup("Pantry").bindTooltip("Pantry", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Pantry", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2017</h1>'  + '<img src="./img/pantry_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/pantry_2019.jpg" + " class=imgclass " />');;
+});
 
-// SECOND FLOOR FEATURES
+	var L1diningroom = L.polygon([
+	[12, 13],
+	[25, 13],
+	[25, 19],
+	[12, 19]
+],roomStyle
+).bindTooltip("Dining Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/dining_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/dining_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/dining_2019.jpg" + " class=imgclass " />');;
+});
+
+	var L1bathroom = L.polygon([
+	[25, 13],
+	[25, 19],
+	[31, 19],
+	[31, 13]
+],roomStyle
+).bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2017</h1>'  + '<img src="./img/lowerbathroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/lowerbathroom_2019.jpg" + " class=imgclass " />');;
+});
+
+	var L1garage = L.polygon([
+	[31, 0],
+	[50.5, 0],
+	[50.5, 17],
+	[31, 17]
+],roomStyle
+).bindTooltip("Garage", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX SECOND FLOOR FEATURES
 
 	var L2fixtures = L.polyline([
 	[[31, 3], //Stairs
@@ -490,7 +502,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[3, 13],
 	[0, 13],
 ],roomStyle
-).bindPopup("Green Room").bindTooltip("Green Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Green Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/greenroom_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/greenroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/greenroom_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2greencloset = L.polygon([
 	[3, 12],
@@ -498,7 +513,7 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[10, 17],
 	[3, 17]
 ],roomStyle
-).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
 
 	var L2bathroom = L.polygon([
 	[10, 3],
@@ -506,15 +521,17 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[18, 8],
 	[10, 8]
 ],roomStyle
-).bindPopup("Bathroom").bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
-
+).bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/upperbathroom_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/upperbathroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/upperbathroom_2019.jpg" + " class=imgclass " />');;
+});
 	var L2bluecloset = L.polygon([
 	[10, 8],
 	[12,  8],
 	[12, 17],
 	[10, 17]
 ],roomStyle
-).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
 
 	var L2blueroom = L.polygon([
 	[12, 8],
@@ -523,7 +540,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[24, 19],
 	[12, 19]
 ],roomStyle
-).bindPopup("Blue Room").bindTooltip("Blue Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Blue Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/blueroom_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/blueroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/blueroom_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2hallcloset = L.polygon([
 	[18, 3],
@@ -531,7 +551,31 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[20, 8],
 	[18, 8]
 ],roomStyle
-).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+
+	var L2hall = L.polygon([
+	[13, 0],
+	[24,  0],
+	[24, 3],
+	[28, 3],
+	[28, 9],
+	[31, 9],
+	[31, 13],
+	[36, 13],
+	[36, 17],
+	[31, 17],
+	[31, 19],
+	[24, 19],
+	[24, 13],
+	[20, 8],
+	[20, 3],
+	[13, 3]
+],roomStyle
+).bindTooltip("Hall", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/hall_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/hall_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/hall_2019.jpg" + " class=imgclass " />');;
+});
+
 
 	var L2laundry = L.polygon([
 	[31, 7],
@@ -539,7 +583,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[36, 13],
 	[36, 7]
 ],roomStyle
-).bindPopup("Laundry Room").bindTooltip("Laundry Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Laundry Room", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/laundry_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/laundry_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/laundry_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2master = L.polygon([
 	[36, 5],
@@ -547,7 +594,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[52, 17],
 	[36, 17]
 ],roomStyle
-).bindPopup("Master Bedroom").bindTooltip("Master Bedroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Master Bedroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/masterbedroom_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/masterbedroom_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/masterbedroom_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2mastercloset = L.polygon([
 	[31, 0],
@@ -555,7 +605,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[39, 5],
 	[31, 5]
 ],roomStyle
-).bindPopup("Closet").bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Closet", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/mastercloset_2013.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/mastercloset_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2masterbath = L.polygon([
 	[46, 0],
@@ -563,7 +616,10 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[52, 5],
 	[46, 5]
 ],roomStyle
-).bindPopup("Bathroom").bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Bathroom", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2019</h1>'  + '<img src="./img/vanity_2019.jpg" + " class=imgclass " />');;
+});
 
 	var L2mastervanity = L.polygon([
 	[39, 0],
@@ -571,11 +627,16 @@ sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=
 	[46, 5],
 	[39, 5]
 ],roomStyle
-).bindPopup("Vanity").bindTooltip("Vanity", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Vanity", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.show()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/vanity_2013.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/vanity_2017.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/vanity_2019.jpg" + " class=imgclass " />');;
+});
 
+
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX LAYER GROUP HANDLING
 
 var L1 = L.layerGroup([L1footprint, L1livingroom, L1foyer, L1closet, L1kitchen, L1diningroom, L1bathroom, L1garage, L1pantry, L1fixtures, L1walls]);
-var L2 = L.layerGroup([L2footprint, L2greenroom, L2greencloset, L2bathroom, L2blueroom, L2hallcloset, L2bluecloset, L2laundry, L2master, L2mastercloset, L2mastervanity, L2masterbath, L2fixtures, L2walls]);
+var L2 = L.layerGroup([L2footprint, L2greenroom, L2greencloset, L2bathroom, L2blueroom, L2hallcloset, L2hall, L2bluecloset, L2laundry, L2master, L2mastercloset, L2mastervanity, L2masterbath, L2fixtures, L2walls]);
 
 //L.CursorHandler = L.Handler.extend({
 //
@@ -607,8 +668,8 @@ var L2 = L.layerGroup([L2footprint, L2greenroom, L2greencloset, L2bathroom, L2bl
 //	}
 //
 //});
-//
-//L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
+
+L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
 	var map = L.map('map', {
 		crs: L.CRS.Simple,
@@ -649,6 +710,12 @@ L2.eachLayer(function(layer) {
 //			layer.bringToBack();
 			});
 	}
+});
+
+//hide sidebar when floor level is changed
+map.on('baselayerchange', function(e) {
+	sidebar.hide();
+	console.log(e);
 });
 
 		var sidebar = L.control.sidebar('sidebar', {
