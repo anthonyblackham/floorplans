@@ -255,7 +255,10 @@ var highlight = {
 	[9, 17],
 	[9, 13]
 ],roomStyle
-).bindPopup("Foyer").bindTooltip("Foyer", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip();;
+).bindTooltip("Foyer", {permanent: true, direction:"center", className: 'tooltipclass'}).openTooltip().on('click', function () {
+sidebar.toggle()
+sidebar.setContent('<h1>2013</h1>' + '<img src="./img/2013_foyer.jpg" + " class=imgclass " />' + '<h1>2017</h1>'  + '<img src="./img/2017_foyer.jpg" + " class=imgclass " />' + '<h1>2019</h1>'  + '<img src="./img/2019_foyer.jpg" + " class=imgclass " />');;
+});
 
 	var L1closet = L.polygon([
 	[9, 13],
@@ -654,14 +657,14 @@ L2.eachLayer(function(layer) {
 		});
 		map.addControl(sidebar);
 
-		var marker = L.marker([0, 0]).addTo(map).on('click', function () {
-			sidebar.toggle();
-			sidebar.setContent('<h1>2017</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2018</h1>' +  '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2019</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />');
-		});
+//		var marker = L.marker([0, 0]).addTo(map).on('click', function () {
+//			sidebar.toggle();
+//			sidebar.setContent('<h1>2017</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2018</h1>' +  '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />' + '<h1>2019</h1>' + '<br>' + '<img src="https://static.pexels.com/photos/189349/pexels-photo-189349.jpeg" + " class=imgclass " />');
+//		});
 
-		map.on('click', function () {
-			sidebar.hide();
-		})
+//		map.on('click', function () {
+//			sidebar.hide();
+//		})
 
 		sidebar.on('show', function () {
 			console.log('Sidebar will be visible.');
