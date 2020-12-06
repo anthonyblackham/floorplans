@@ -15,6 +15,8 @@
 	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 
+	<link rel="stylesheet" href="./src/L.Control.Sidebar.css" />
+	<script src="./src/L.Control.Sidebar.js"></script>
 
 	<style>
 		html, body {
@@ -38,6 +40,8 @@
 <body>
 
 <div id='map'></div>
+
+<div id="sidebar"></div>
 
 <script>
 
@@ -565,32 +569,32 @@ var L2 = L.layerGroup([L2footprint, L2greenroom, L2greencloset, L2bathroom, L2bl
 
 //L.CursorHandler = L.Handler.extend({
 //
-//    addHooks: function () {
-//        this._popup = new L.Popup();
-//        this._map.on('mouseover', this._open, this);
-//        this._map.on('mousemove', this._update, this);
-//        this._map.on('mouseout', this._close, this);
-//    },
+//	addHooks: function () {
+//		this._popup = new L.Popup();
+//		this._map.on('mouseover', this._open, this);
+//		this._map.on('mousemove', this._update, this);
+//		this._map.on('mouseout', this._close, this);
+//	},
 //
-//    removeHooks: function () {
-//        this._map.off('mouseover', this._open, this);
-//        this._map.off('mousemove', this._update, this);
-//        this._map.off('mouseout', this._close, this);
-//    },
-//    
-//    _open: function (e) {
-//        this._update(e);
-//        this._popup.openOn(this._map);
-//    },
+//	removeHooks: function () {
+//		this._map.off('mouseover', this._open, this);
+//		this._map.off('mousemove', this._update, this);
+//		this._map.off('mouseout', this._close, this);
+//	},
+//	
+//	_open: function (e) {
+//		this._update(e);
+//		this._popup.openOn(this._map);
+//	},
 //
-//    _close: function () {
-//        this._map.closePopup(this._popup);
-//    },
+//	_close: function () {
+//		this._map.closePopup(this._popup);
+//	},
 //
-//    _update: function (e) {
-//        this._popup.setLatLng(e.latlng)
-//            .setContent(e.latlng.toString());
-//    }
+//	_update: function (e) {
+//		this._popup.setLatLng(e.latlng)
+//			.setContent(e.latlng.toString());
+//	}
 //
 //});
 //
@@ -637,7 +641,43 @@ L2.eachLayer(function(layer) {
 	}
 });
 
+		var sidebar = L.control.sidebar('sidebar', {
+			closeButton: true,
+			position: 'left'
+		});
+		map.addControl(sidebar);
+
+		var marker = L.marker([0, 0]).addTo(map).on('click', function () {
+			sidebar.toggle();
+			sidebar.setContent('<h1>Test</h1>');
+		});
+
+		map.on('click', function () {
+			sidebar.hide();
+		})
+
+		sidebar.on('show', function () {
+			console.log('Sidebar will be visible.');
+		});
+
+		sidebar.on('shown', function () {
+			console.log('Sidebar is visible.');
+		});
+
+		sidebar.on('hide', function () {
+			console.log('Sidebar will be hidden.');
+		});
+
+		sidebar.on('hidden', function () {
+			console.log('Sidebar is hidden.');
+		});
+
+		L.DomEvent.on(sidebar.getCloseButton(), 'click', function () {
+			console.log('Close button clicked.');
+		});
+
 	L.control.layers(baseMaps).addTo(map);
+
 
 </script>
 
