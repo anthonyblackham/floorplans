@@ -1,5 +1,5 @@
-# floorplans
+# [floorplans](https://anthonyblackham.com/floorplans/)
 
-Using leaflet to create floorplans using a simple coordinate system
+Using [Leaflet](https://leafletjs.com/) to create floorplans using a simple coordinate system
 
-![Screenshot](docs/screenshot.png)
+[![Screenshot](docs/screenshot.png)](https://anthonyblackham.com/floorplans/)
